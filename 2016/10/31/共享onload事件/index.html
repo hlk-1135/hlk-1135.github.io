@@ -8,22 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>HLK_1135的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="让函数在网页加载完毕后立刻执行，网页加载完毕时会触发一个onload事件，这个事件与window对象相关联。在这里，我推荐使用第三种方法，因为代码可以直接拷贝使用，把需要执行的函数加入到队列里就可以，便于扩展。
-####1.如果只有一个函数：1window.onload = prepareGallery;
-####2.假设有两个函数，想让它们两个都在页面加载时得到执行。如果把它们逐一绑定到onlo">
+  <meta name="description" content="让函数在网页加载完毕后立刻执行，网页加载完毕时会触发一个onload事件，这个事件与window对象相关联。在这里，我推荐使用第三种方法，因为代码可以直接拷贝使用，把需要执行的函数加入到队列里就可以，便于扩展。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HLK_1135的个人博客">
 <meta property="og:url" content="http://yoursite.com/2016/10/31/共享onload事件/index.html">
 <meta property="og:site_name" content="HLK_1135的个人博客">
-<meta property="og:description" content="让函数在网页加载完毕后立刻执行，网页加载完毕时会触发一个onload事件，这个事件与window对象相关联。在这里，我推荐使用第三种方法，因为代码可以直接拷贝使用，把需要执行的函数加入到队列里就可以，便于扩展。
-####1.如果只有一个函数：1window.onload = prepareGallery;
-####2.假设有两个函数，想让它们两个都在页面加载时得到执行。如果把它们逐一绑定到onlo">
-<meta property="og:updated_time" content="2016-10-31T13:55:31.221Z">
+<meta property="og:description" content="让函数在网页加载完毕后立刻执行，网页加载完毕时会触发一个onload事件，这个事件与window对象相关联。在这里，我推荐使用第三种方法，因为代码可以直接拷贝使用，把需要执行的函数加入到队列里就可以，便于扩展。">
+<meta property="og:updated_time" content="2016-10-31T14:04:59.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HLK_1135的个人博客">
-<meta name="twitter:description" content="让函数在网页加载完毕后立刻执行，网页加载完毕时会触发一个onload事件，这个事件与window对象相关联。在这里，我推荐使用第三种方法，因为代码可以直接拷贝使用，把需要执行的函数加入到队列里就可以，便于扩展。
-####1.如果只有一个函数：1window.onload = prepareGallery;
-####2.假设有两个函数，想让它们两个都在页面加载时得到执行。如果把它们逐一绑定到onlo">
+<meta name="twitter:description" content="让函数在网页加载完毕后立刻执行，网页加载完毕时会触发一个onload事件，这个事件与window对象相关联。在这里，我推荐使用第三种方法，因为代码可以直接拷贝使用，把需要执行的函数加入到队列里就可以，便于扩展。">
   
     <link rel="alternative" href="/atom.xml" title="HLK_1135的个人博客" type="application/atom+xml">
   
@@ -159,7 +153,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>让函数在网页加载完毕后立刻执行，网页加载完毕时会触发一个onload事件，这个事件与window对象相关联。<br><strong>在这里，我推荐使用第三种方法，因为代码可以直接拷贝使用，把需要执行的函数加入到队列里就可以，便于扩展。</strong></p>
+        <p>让函数在网页加载完毕后立刻执行，网页加载完毕时会触发一个onload事件，这个事件与window对象相关联。<br><strong>在这里，我推荐使用第三种方法，因为代码可以直接拷贝使用，把需要执行的函数加入到队列里就可以，便于扩展。</strong><a id="more"></a></p>
 <p>####1.如果只有一个函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = prepareGallery;</div></pre></td></tr></table></figure></p>
 <p>####2.假设有两个函数，想让它们两个都在页面加载时得到执行。如果把它们逐一绑定到onload事件上，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = first;</div><div class="line"><span class="built_in">window</span>.onload = second;</div></pre></td></tr></table></figure></p>
 <p><strong>second将取代first，只执行最后一个。</strong><br><strong>解决方案：</strong>先创建一个匿名函数来容纳这两个函数，然后把那个匿名函数绑定到onload事件上，如下所示：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	first();</div><div class="line">	second();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
