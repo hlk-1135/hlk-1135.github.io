@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>博客介绍 | HLK_1135的个人博客</title>
+  <title>js在现有元素后插入一个新的元素 | HLK_1135的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to hlk-1135。该博客是我使用Github、Hexo和Markdown搭建而成，主要记录自己身边的点滴，关于学习，关于生活。后期如果自己再能搭建一个相册，也会将相册放在该博客上。">
+  <meta name="description" content="javascript提供了一个insertBefore方法，但可惜的是DOM本身并没有提供insertAfter方法，不过我们完全可以利用已有的DOM方法和属性编写一个insertAfter函数。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客介绍">
-<meta property="og:url" content="http://yoursite.com/2016/10/29/blog-introduce/index.html">
+<meta property="og:title" content="js在现有元素后插入一个新的元素">
+<meta property="og:url" content="http://yoursite.com/2016/11/03/js插入元素/index.html">
 <meta property="og:site_name" content="HLK_1135的个人博客">
-<meta property="og:description" content="Welcome to hlk-1135。该博客是我使用Github、Hexo和Markdown搭建而成，主要记录自己身边的点滴，关于学习，关于生活。后期如果自己再能搭建一个相册，也会将相册放在该博客上。">
-<meta property="og:image" content="http://yoursite.com/2016/10/29/blog-introduce/me.jpg">
-<meta property="og:updated_time" content="2016-10-31T10:14:11.734Z">
+<meta property="og:description" content="javascript提供了一个insertBefore方法，但可惜的是DOM本身并没有提供insertAfter方法，不过我们完全可以利用已有的DOM方法和属性编写一个insertAfter函数。">
+<meta property="og:updated_time" content="2016-11-03T03:17:50.120Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客介绍">
-<meta name="twitter:description" content="Welcome to hlk-1135。该博客是我使用Github、Hexo和Markdown搭建而成，主要记录自己身边的点滴，关于学习，关于生活。后期如果自己再能搭建一个相册，也会将相册放在该博客上。">
-<meta name="twitter:image" content="http://yoursite.com/2016/10/29/blog-introduce/me.jpg">
+<meta name="twitter:title" content="js在现有元素后插入一个新的元素">
+<meta name="twitter:description" content="javascript提供了一个insertBefore方法，但可惜的是DOM本身并没有提供insertAfter方法，不过我们完全可以利用已有的DOM方法和属性编写一个insertAfter函数。">
   
     <link rel="alternative" href="/atom.xml" title="HLK_1135的个人博客" type="application/atom+xml">
   
@@ -143,7 +141,7 @@
 </nav>
 
       <div class="body-wrap">
-        <article id="post-blog-introduce" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-js插入元素" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -153,7 +151,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      博客介绍
+      js在现有元素后插入一个新的元素
     </h1>
   
 
@@ -161,19 +159,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hlk-1135.github.io/" target="_blank" rel="external">hlk-1135</a>。该博客是我使用Github、Hexo和Markdown搭建而成，主要记录自己身边的点滴，关于学习，关于生活。后期如果自己再能搭建一个相册，也会将相册放在该博客上。<br><a id="more"></a><br>Dave_kun，之所以起这个名字，是因为我是一个享受自由的人，我不喜欢被外界过多的约束自己，但是我也明白，万事都有其规则，尽力，对得起自己的心就好。</p>
-<h2 id="路漫漫其修远兮，吾将上下而求索。"><a href="#路漫漫其修远兮，吾将上下而求索。" class="headerlink" title="路漫漫其修远兮，吾将上下而求索。"></a>路漫漫其修远兮，吾将上下而求索。</h2><img src="/2016/10/29/blog-introduce/me.jpg" alt="史小坤个人照片" title="史小坤个人照片">
+        <p>javascript提供了一个insertBefore方法，但可惜的是DOM本身并没有提供insertAfter方法，不过我们完全可以利用已有的DOM方法和属性编写一个insertAfter函数。<br><a id="more"></a><br>这个函数用到了一下DOM方法和属性：</p>
+<ul>
+<li>parentNode属性</li>
+<li>lastChild属性</li>
+<li>appendChild属性</li>
+<li>insertBefore属性</li>
+<li>nextSibling属性</li>
+</ul>
+<hr>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function inSertAfter(newElement,targetElement) &#123;</div><div class="line">	var parent=targetElement.parentNode;</div><div class="line">	if (parent.lastChild==targetElement) &#123;</div><div class="line">		parent.appChild(newElement);</div><div class="line">	&#125; else &#123;</div><div class="line">		parent.inSertBefore(newElement,targentElement.nextSibling);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/10/29/blog-introduce/" class="archive-article-date">
-  	<time datetime="2016-10-29T04:58:03.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-29</time>
+      <a href="/2016/11/03/js插入元素/" class="archive-article-date">
+  	<time datetime="2016-11-03T03:15:39.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-03</time>
 </a>
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客介绍/">博客介绍</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 	</div>
 
       
@@ -186,15 +193,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/10/31/start/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          放手去闯吧
-        
-      </div>
-    </a>
   
+    <a href="/2016/10/31/共享onload事件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">共享onload事件</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
